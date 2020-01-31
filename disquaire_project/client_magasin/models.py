@@ -13,8 +13,8 @@ from django.db import models
 #]
 
 
-class Producteurs(models.Model):
-   photo_path='C:\\Users\frup68962\\Documents\\IMG_20191216_125946.jpg'
+class producteur(models.Model):
+   photo_path='.\\decouvrez_django\\disquaire_project\\client_magasin\\templates\\img\\Koala.jpg'
    nom_societe= models.CharField(max_length=200, unique=True)
    nom = models.CharField(max_length=200)
    prenom = models.CharField(max_length=200)
@@ -28,10 +28,9 @@ class Producteurs(models.Model):
 
 
 
-class ref_produits(models.Model):
+class refProduit(models.Model):
    nom = models.CharField(max_length=200)
-   prenom = models.CharField(max_length=200)
-   photo_path='C:\\Users\frup68962\\Documents\\IMG_20191216_125946.jpg'
+   photo_path='.\\decouvrez_django\\disquaire_project\\client_magasin\\templates\\img\\Koala.jpg'
    photo=models.ImageField(
       upload_to=photo_path,
       #storage=AppEngineBlobStorage(),
@@ -42,17 +41,17 @@ class ref_produits(models.Model):
 
 
 class metEnVente(models.Model):
-   id_producteur=models.ForeignKey(Producteurs, on_delete=models.CASCADE)
-   id_produit= models.ManyToManyField(ref_produits, related_name='produits', blank=True)
+   id_producteur=models.ForeignKey(producteur, on_delete=models.CASCADE)
+   id_produit= models.ManyToManyField(refProduit, related_name='produits', blank=True)
    created_at = models.DateTimeField(auto_now_add=True)
 
-class ref_market(models.Model):
+class refMarket(models.Model):
    ville = models.CharField(max_length=200)
    heure_deb = models.DateTimeField()
    heure_deb = models.DateTimeField()
    created_at = models.DateTimeField(auto_now_add=True)
 
-class sinstalle(models.Model):
-   id_producteur= models.ManyToManyField(Producteurs, related_name='producteurs', blank=True)
-   id_market=models.ForeignKey(ref_market, on_delete=models.CASCADE)
+class sInstalle(models.Model):
+   id_producteur= models.ManyToManyField(producteur, related_name='producteurs', blank=True)
+   id_market=models.ForeignKey(refMarket, on_delete=models.CASCADE)
    created_at = models.DateTimeField(auto_now_add=True)
