@@ -1,4 +1,5 @@
 *.pyc
+*.jpg
 *~
 /.vscode
 __pycache__
