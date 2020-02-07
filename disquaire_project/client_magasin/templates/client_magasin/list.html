@@ -1,1 +1,13 @@
 sssssssssssssssssssssssssssssssssssssssssssssssssss
+<ul>
+   {% for item in listInstall %}
+
+
+      {% for item2 in item.market.all %}
+      <li>{{ item2.ville }}</li>
+      {% endfor %}
+
+   {% endfor %}
+</ul>
+
+   

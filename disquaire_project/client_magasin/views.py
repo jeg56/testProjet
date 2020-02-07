@@ -5,7 +5,7 @@ from django.db import connection
 from django.template import loader
 #from .models import MARCHES
 
-# Create your views here.
+'''
 def index(request):
    messageFinal=[]
    results = producteur.objects.get(pk=2)
@@ -18,7 +18,18 @@ def index(request):
 
    template = loader.get_template('client_magasin/index.html')
    return HttpResponse(template.render(request=request))
+'''
+def index(request):
+   messageFinal=[]
+   print(producteur.objects.get(pk=1))
+   producteurSel = producteur.objects.get(pk=1)
+   listInstall=sInstalle.objects.filter(producteur=producteurSel)
 
+   context={
+      'listInstall':listInstall
+   }
+   template = loader.get_template('client_magasin/index.html')
+   return HttpResponse(template.render(context,request=request))
 
 def listing(request):
    #MARCHES=refMarket.objects.all()
@@ -116,10 +127,19 @@ def list_marche(request):
       messageFinal.append("<li>{}</li>".format(item.ville))
    return HttpResponse('Liste des marchés :<ul>{}</ul>'.format("".join(messageFinal)))
 
-
+'''
 def list_produit(request):
    messageFinal=[]
    results = refProduit.objects.all()
    for item in results:
       messageFinal.append("<li>{} - {}</li>".format(item.nom,item.type))
    return HttpResponse('Liste des produits :<ul>{}</ul>'.format("".join(messageFinal)))
+'''
+def list_produit(request):
+   messageFinal=[]
+   produits = refProduit.objects.all()
+   context={
+      'produits':produits
+   }
+   template = loader.get_template('client_magasin/listProduit.html')
+   return HttpResponse(template.render(context,request=request))

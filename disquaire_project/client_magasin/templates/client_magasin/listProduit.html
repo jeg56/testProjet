@@ -1,0 +1,15 @@
+{% extends 'client_magasin/base.html' %}
+
+{% block content %}
+
+   {% for produit in produits %}
+      <div class="col-sm-4 text-center">
+         <a href="/">
+            <img class="img-responsive" src="{{ MEDIA_URL }} {{ produit.imgfile.url }}" alt="{{ produit.nom }}">
+         </a>
+
+      </div>
+      {% if forloop.counter|divisibleby:3 %}<div class="clearfix"></div>{% endif %}
+   {% endfor %}
+
+{% endblock content %}
