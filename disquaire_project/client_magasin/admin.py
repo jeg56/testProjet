@@ -2,13 +2,11 @@ from django.contrib import admin
 
 # Register your models here.
 
-from .models import refMarket,metEnVente,refProduit,producteur,sInstalle,marche
+from .models import refMarket,refProduit,producteur,sInstalle,vend
 
 
 admin.site.register(refMarket)
-admin.site.register(metEnVente)
 admin.site.register(refProduit)
 admin.site.register(producteur)
 admin.site.register(sInstalle)
-admin.site.register(marche)
-
+admin.site.register(vend)
