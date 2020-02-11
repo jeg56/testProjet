@@ -48,7 +48,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'debug_toolbar',
-    'client_magasin',
+   # 'client_magasin',
+    'market',
 ]
 
 MIDDLEWARE = [
@@ -92,7 +93,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql', # on utilise l'adaptateur postgresql
         'OPTIONS': {
-           'options': '-c search_path=test10'
+           'options': '-c search_path=test13'
            },
         'NAME': 'disquaire', # le nom de notre base de données créée précédemment
         'USER': 'postgres', # attention : remplacez par votre nom d'utilisateur !!

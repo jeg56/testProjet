@@ -1,0 +1,48 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+</head>
+
+<body>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>About - Business Casual - Start Bootstrap Theme</title>
+    {% load static %}
+    <!-- Bootstrap Core CSS -->
+    <link href="{% static 'market/css/bootstrap.min.css' %}" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="{% static 'market/css/business-casual.css' %}" rel="stylesheet">
+
+
+
+</head>
+<body>
+<div class="container">
+   <div class="row">
+     <div class="box">
+         
+         {% block zoneCentrale %}
+            
+         {% endblock zoneCentrale %}
+            
+     </div>
+   </div>
+ </div>
+
+
+    <!-- jQuery -->
+    <script src="{% static 'market/js/jquery.js' %}"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="{% static 'market/js/bootstrap.min.js' %}"></script>
+
+</body>
+
+</html>

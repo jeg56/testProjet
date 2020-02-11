@@ -23,8 +23,9 @@ from store import views
 
 urlpatterns = [
     url(r'^$', views.index, name="index"),
-    url(r'^goods/', include('client_magasin.urls', namespace='client_magasin')),
-    url(r'^store/', include('store.urls', namespace='store')),
+    #url(r'^goods/', include('client_magasin.urls', namespace='client_magasin')),
+    #url(r'^store/', include('store.urls', namespace='store')),
+    url(r'^market/', include('market.urls', namespace='market')),
     url(r'^admin/', admin.site.urls)
 ]
 

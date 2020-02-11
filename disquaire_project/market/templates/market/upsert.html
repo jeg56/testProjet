@@ -1,0 +1,20 @@
+{% block message%}
+{{ title }}
+   {% if messages %}
+      <div class="text-center">
+      {{ messages }} 
+      </div>
+   {% else %}
+   <form class="form-inline" action="{% url 'market:upsert' %}" method="post">
+      {% csrf_token %}
+      <div class="form-group">
+      <label for="ville" class="control-label">Ville</label>
+      <input type="text" name="ville" value="" id="ville">
+      </div>
+
+       <input type="hidden" class="hidden" value="AJOUT" name="action">
+   
+      <button type="submit" class="btn btn-success">Réserver</button>
+   </form>
+   {% endif %}
+{% endblock %}

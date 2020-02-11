@@ -1,0 +1,25 @@
+
+{% extends 'market/base.html' %}
+
+{% block zoneCentrale %}
+    
+ <table class="table table-striped">
+   <thead>
+      <tr>
+      <th scope="col">header1</th>
+      <th scope="col">header2</th>
+      <th scope="col">header2</th>
+      </tr>
+   </thead>
+   <tbody>
+      {% for market in listMarket %}
+      <tr>
+         <th scope="row"> {{ market.ville }}</th>
+         <th scope="row"> {{ market.HDebut }}</th>
+         <th scope="row"> {{ market.HFin  }}</th>
+      </tr> 
+      {% endfor %}
+   </tbody>
+</table>
+{% endblock zoneCentrale %}
+  
