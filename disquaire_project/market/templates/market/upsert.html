@@ -1,12 +1,36 @@
 {% block message%}
-{{ title }}
+{{ title }} 
    {% if messages %}
       <div class="text-center">
       {{ messages }} 
+      {% if showMap %}
+      <div  width="50%" height="50%"  >
+         {% include 'market/carte.html' with longitude=longitude latitude=latitude nom=nom adresse=adresse %}
+      </div>
+      {% endif %}
       </div>
    {% else %}
+   <br>
+
+
+ 
    <form class="form-inline" action="{% url 'market:upsert' %}" method="post">
       {% csrf_token %}
+      <div class="form-group">
+         <label for="nom" class="control-label">Nom</label>
+         <input type="text" name="nom" value="" id="nom">
+      </div>
+
+      <div class="form-group">
+         <label for="adresse" class="control-label">Adresse</label>
+         <input type="text" name="adresse" value="" id="adresse">
+      </div>
+
+      <div class="form-group">
+         <label for="cp" class="control-label">Code Postal</label>
+         <input type="text" name="cp" value="" id="cp">
+      </div>
+
       <div class="form-group">
       <label for="ville" class="control-label">Ville</label>
       <input type="text" name="ville" value="" id="ville">
@@ -16,5 +40,16 @@
    
       <button type="submit" class="btn btn-success">Réserver</button>
    </form>
+
+ 
+
+
+
+
+
+
+
+
    {% endif %}
+
 {% endblock %}

@@ -2,24 +2,18 @@
 {% extends 'market/base.html' %}
 
 {% block zoneCentrale %}
-    
- <table class="table table-striped">
-   <thead>
-      <tr>
-      <th scope="col">header1</th>
-      <th scope="col">header2</th>
-      <th scope="col">header2</th>
-      </tr>
-   </thead>
-   <tbody>
-      {% for market in listMarket %}
-      <tr>
-         <th scope="row"> {{ market.ville }}</th>
-         <th scope="row"> {{ market.HDebut }}</th>
-         <th scope="row"> {{ market.HFin  }}</th>
-      </tr> 
-      {% endfor %}
-   </tbody>
-</table>
+
+
+<form class="form-inline" action="{% url 'market:index' %}" method="post">
+   {% csrf_token %}
+   <div class="form-group">
+   <label for="ville" class="control-label">Ville</label>
+   <input type="text" name="ville" value="" id="ville">
+   </div>
+
+
+   <button type="submit" class="btn btn-success">Réserver</button>
+</form>
+{{market.ville}}
+   {% include 'market/carteAllMarket.html' with listMarket=listMarket centre_latitude=market.latitude centre_longitude=market.longitude  %}
 {% endblock zoneCentrale %}
-  

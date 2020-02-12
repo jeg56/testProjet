@@ -1,0 +1,26 @@
+
+   <script type='text/javascript'>
+
+      var map, infobox;
+  
+      function GetMap() {
+          map = new Microsoft.Maps.Map('#myMap', {
+              center: new Microsoft.Maps.Location({{ latitude }}, {{ longitude }})
+          });
+  
+          var center = map.getCenter();
+  
+          //Create an infobox that will render in the center of the map.
+          infobox = new Microsoft.Maps.Infobox(center, {
+              title: '{{ nom }}' ,
+              description: '{{ adresse }}' 
+          });
+  
+          //Assign the infobox to a map instance.
+          infobox.setMap(map);
+      }
+      </script>
+
+      <script type='text/javascript' src='https://www.bing.com/api/maps/mapcontrol?callback=GetMap&key=Aj-CW4KKZ2QbFVCuOEKVg7PpUsZvMYhJaKLY226BDjRkw-s4tJCKsv0onicoVP5d' async defer></script>
+
+ <div id="myMap" style="position:relative;width:800px;height:600px;"></div>
