@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404,get_list_or_404
 from django.http import HttpResponse
 from .models import refMarket,refPlageHoraire
 from django.db import connection
@@ -11,7 +11,7 @@ def index(request):
    market=listMarket.filter()[:1].get()
    if request.method == 'POST':
       ville = request.POST.get('ville')
-      listMarket=refMarket.objects.filter(ville__icontains=ville)
+      listMarket=get_list_or_404(refMarket,ville__icontains=ville)
 
       if listMarket.exists():
          market=listMarket[:1].get()

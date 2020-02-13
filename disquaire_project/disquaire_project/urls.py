@@ -19,10 +19,10 @@ from django.contrib import admin
 from django.contrib.staticfiles.urls import static
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
-from store import views
+#from store import views
 
 urlpatterns = [
-    url(r'^$', views.index, name="index"),
+    #url(r'^$', views.index, name="index"),
     #url(r'^goods/', include('client_magasin.urls', namespace='client_magasin')),
     #url(r'^store/', include('store.urls', namespace='store')),
     url(r'^market/', include('market.urls', namespace='market')),
