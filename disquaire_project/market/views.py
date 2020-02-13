@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404,get_list_or_404
 from django.http import HttpResponse
-from .models import refMarket,refPlageHoraire
+from .models import refMarket,refPlageHoraire,producteur,sInstalle
 from django.db import connection
 from django.template import loader
 import requests
@@ -9,15 +9,14 @@ from geopy.geocoders import Nominatim
 def index(request):
    listMarket=refMarket.objects.all()
    market=listMarket.filter()[:1].get()
+   
    if request.method == 'POST':
       ville = request.POST.get('ville')
       listMarket=get_list_or_404(refMarket,ville__icontains=ville)
 
       if listMarket.exists():
          market=listMarket[:1].get()
-     
- 
-      
+   
    context={
       'listMarket':listMarket,
       'market':market
@@ -93,3 +92,26 @@ def upsert(request):
    }
 
    return render(request, 'market/upsert.html', context)
+
+
+def listMarket(request):
+   ProducteurMarche={}
+  
+   for infosProducteur in producteur.objects.all():
+      print('**************************'+infosProducteur.prenom)
+      tableau=[]
+      for infosInstall in sInstalle.objects.filter(producteur=infosProducteur):
+         for infosMarket in infosInstall.market.all():
+            print('--->'+infosMarket.ville)
+            tableau.append(infosMarket.ville)
+      ProducteurMarche[infosProducteur.prenom]=tableau
+
+   
+
+
+
+   
+   context={
+      'ProducteurMarche':ProducteurMarche,
+   }
+   return render(request, 'market/list.html', context)

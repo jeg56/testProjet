@@ -44,3 +44,33 @@ class refMarket(models.Model):
    class Meta:
       db_table = 'refmarket'
 
+class producteur(models.Model):
+   nom = models.CharField(max_length=200,unique=True)
+   prenom = models.CharField(max_length=200)
+   created_at = models.DateTimeField(auto_now_add=True)
+
+   def __str__(self):
+      return self.nom
+      
+   class Meta:
+      db_table = 'producteur'
+
+
+
+class sInstalle(models.Model):
+   #producteur= models.ManyToManyField(producteur, related_name='sinstalleproducteur', blank=True)
+   producteur= models.ForeignKey('producteur', related_name='sinstalleproducteur', on_delete=models.CASCADE)
+   market= models.ManyToManyField(refMarket, related_name='refmarket', blank=True)
+   #market= models.ForeignKey('refmarket', on_delete=models.CASCADE)
+ 
+   #id_market=models.ForeignKey(refMarket, on_delete=models.CASCADE) #Relation 1 à plusieurs
+   created_at = models.DateTimeField(auto_now_add=True)
+
+   def __str__(self):
+        return "%s - %s" % (
+            self.producteur.nom,
+            ", ".join(mark.nom for mark in self.market.all()),
+        )
+
+   class Meta:
+      db_table = 'sinstalle'     

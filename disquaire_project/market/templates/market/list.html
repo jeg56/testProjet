@@ -1,0 +1,25 @@
+
+{% block zoneCentrale %}
+    
+<table class="table table-striped">
+  <thead>
+     <tr>
+      <th scope="col">Producteur</th>
+      <th scope="col">Ville du marché</th>
+
+     </tr>
+  </thead>
+  <tbody>
+
+     {% for key, value in ProducteurMarche.items %}
+         <tr>
+            <th scope="row"> {{ key}}</th>
+            <th scope="row"> {{value }}</th>
+         </tr> 
+     {% endfor %}
+
+        
+  </tbody>
+</table>
+{% endblock zoneCentrale %}
+ 
